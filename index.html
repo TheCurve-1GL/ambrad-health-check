@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A fixed-price Value and Risk Health Check for owners of ports, energy assets and estates. About six weeks, plain-English plan, £5k to £25k.">
+<title>Value and Risk Health Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: Offer Page Style Guide. Centred 1120px column, alternating off-white / sand / navy bands, rounded white cards. Single light look by design. */
+:root{
+  --accent:#0B5CAD; --accent-dark:#084A8C; --accent-soft:#E3EEF9;
+  --ink:#0E1B2E; --ink-soft:#4A586B;
+  --bg:#FAF7F2; --card:#FFFFFF; --line:#E7E1D6; --warm:#F3EDE2;
+  --sky:#8EC0F2; --navy-text:#C9D4E3; --navy-head:#FFFFFF;
+  --shadow-sm:0 1px 2px rgba(14,27,46,.05),0 4px 14px rgba(14,27,46,.06);
+  --shadow-md:0 2px 4px rgba(14,27,46,.05),0 14px 40px rgba(14,27,46,.10);
+  --radius:22px;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65}
+.band{padding-block:72px}
+.band.warm{background:var(--warm)}
+.band.navy{background:var(--ink);color:var(--navy-text)}
+.band.navy h2,.band.navy h3{color:var(--navy-head)}
+.band.navy .eyebrow{color:var(--sky)}
+@media(min-width:800px){.band{padding-block:112px}}
+.inner{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.narrow{max-width:760px}
+h1,h2,h3{font-family:var(--serif);letter-spacing:-0.015em;line-height:1.12;text-wrap:balance;margin:0}
+h1{font-size:clamp(38px,7vw,76px);font-weight:700}
+h2{font-size:clamp(30px,4.6vw,48px);font-weight:600}
+h3{font-size:21px;font-weight:600}
+p{margin:0}
+.hl{color:var(--accent)}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.lede{font-size:18px;color:var(--ink-soft);max-width:640px}
+.head{display:flex;flex-direction:column;gap:14px;margin-bottom:44px}
+.stack{display:flex;flex-direction:column;gap:18px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:18px 28px;border-radius:999px;box-shadow:0 8px 24px rgba(11,92,173,.28);transition:background .2s,transform .2s}
+.btn:hover{background:var(--accent-dark);transform:translateY(-2px)}
+.btn.white{background:#fff;color:var(--accent);box-shadow:0 8px 24px rgba(14,27,46,.18)}
+.btn.white:hover{background:var(--accent-soft)}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.btn.white:focus-visible{outline-color:#fff}
+@media(max-width:600px){.btn{width:100%}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}.btn:hover{transform:none}}
+
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.tag.dark{background:var(--ink);color:#fff}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;padding-block:72px 88px}
+.hero::before{content:"";position:absolute;top:-180px;right:-160px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(11,92,173,.16),rgba(11,92,173,0) 70%);pointer-events:none}
+.hero-grid{position:relative;display:grid;gap:40px;align-items:center}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.5fr 1fr}}
+.hero-copy{display:flex;flex-direction:column;gap:24px;min-width:0}
+.hero-copy .lede{font-size:19px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.sign{display:none}
+@media(min-width:900px){
+  .sign{display:flex;flex-direction:column;gap:10px;background:var(--accent);color:#fff;border-radius:30px;padding:34px 30px;box-shadow:var(--shadow-md);transform:rotate(3deg)}
+  .sign .eyebrow{color:var(--accent-soft)}
+  .sign .big{font-family:var(--serif);font-weight:700;font-size:44px;line-height:1.05}
+  .sign p{color:#EAF0F8}
+}
+
+/* Cards */
+.grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:680px){.grid.two{grid-template-columns:1fr 1fr}.grid.three{grid-template-columns:1fr 1fr}}
+@media(min-width:980px){.grid.three{grid-template-columns:1fr 1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:26px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card p{color:var(--ink-soft)}
+.icon{width:40px;height:40px;border-radius:12px;background:var(--accent-soft);display:grid;place-items:center}
+.icon svg{width:22px;height:22px}
+
+/* Quote card */
+.quote{position:relative;background:var(--card);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow-sm);padding:40px 30px 30px}
+.quote::before{content:"\201C";position:absolute;top:-18px;left:22px;font-family:var(--serif);font-size:130px;line-height:1;color:var(--accent);opacity:.18}
+.quote blockquote{margin:0;font-family:var(--serif);font-size:clamp(22px,3vw,30px);font-weight:500;line-height:1.3;position:relative}
+.quote cite{display:block;margin-top:14px;font-style:normal;font-size:14px;color:var(--ink-soft)}
+
+/* Diagram */
+.diagram{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:22px;margin:0;display:flex;flex-direction:column;gap:12px}
+.diagram svg{width:100%;height:auto;max-width:100%}
+.diagram figcaption{font-size:14px;color:var(--ink-soft)}
+
+/* Steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.step{display:grid;grid-template-columns:64px 1fr;gap:20px;align-items:start}
+.num{width:64px;height:64px;border-radius:18px;background:var(--accent);color:#fff;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:30px}
+.step .when{font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+
+/* Price */
+.price{font-family:var(--serif);font-weight:700;font-size:clamp(34px,4vw,44px);color:var(--accent);line-height:1.1;font-variant-numeric:tabular-nums}
+.panel{background:var(--accent);color:#fff;border-radius:30px;box-shadow:var(--shadow-md);padding:40px 28px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center;margin-top:20px}
+.panel .line{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.4vw,34px);line-height:1.2;text-wrap:balance}
+.panel p{color:#EAF0F8;max-width:560px}
+
+/* Tick lists */
+.ticks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.ticks li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+.mark{width:28px;height:28px;border-radius:50%;background:var(--accent);display:grid;place-items:center;margin-top:1px}
+.mark svg{width:14px;height:14px}
+.ticks.no .mark{background:var(--ink)}
+
+/* Navy proof */
+.split{display:grid;gap:40px}
+@media(min-width:900px){.split{grid-template-columns:1fr 1fr}}
+.band.navy .card{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);box-shadow:none}
+.band.navy .card p{color:var(--navy-text)}
+.stat{font-family:var(--serif);font-weight:700;font-size:clamp(72px,12vw,140px);line-height:1;color:var(--sky)}
+
+/* FAQ */
+.faq{display:flex;flex-direction:column;gap:12px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow-sm)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:32px;height:32px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-size:20px;font-weight:600;line-height:1}
+.faq details[open] summary::after{content:"\2212";background:var(--accent);color:#fff}
+.faq details p{padding:0 22px 20px;color:var(--ink-soft)}
+
+/* Closing CTA */
+.cta{background:var(--accent);color:#fff;border-radius:34px;box-shadow:var(--shadow-md);padding:56px 28px;text-align:center;display:flex;flex-direction:column;gap:18px;align-items:center}
+.cta .eyebrow{color:var(--accent-soft)}
+.cta h2{color:#fff}
+.cta p{color:#EAF0F8;max-width:560px}
+.cta .small{font-size:14px;opacity:.85;word-break:break-all}
+
+footer{border-top:1px solid var(--line);padding-block:28px;font-size:14px;color:var(--ink-soft)}
+footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+footer strong{color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inner hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Ambrad Consulting · Value and Risk Health Check</span>
+      <h1>Find out where your asset money <span class="hl">really goes</span>, and what fails next.</h1>
+      <p class="lede">A fixed-price review of your asset portfolio. About six weeks. A plain-English plan your board can read in twenty minutes.</p>
+      <div><a class="btn" href="https://calendly.com/thecurve-wanbridge/30min" target="_blank" rel="noopener">Book a 30-minute call →</a></div>
+      <div class="tags"><span class="tag">Fixed price</span><span class="tag">About six weeks</span><span class="tag">Ports · Energy · Estates</span></div>
+    </div>
+    <aside class="sign" aria-label="At a glance">
+      <span class="eyebrow">At a glance</span>
+      <span class="big">£5k to £25k</span>
+      <p>Fixed before we start. Six weeks from kick-off to a board-ready plan.</p>
+    </aside>
+  </div>
+</header>
+
+<section class="band warm">
+  <div class="inner narrow stack" style="gap:28px">
+    <div class="quote">
+      <blockquote>We're spending a fortune on maintenance and capital projects, but we can't prove we're getting value for it.</blockquote>
+      <cite>What asset owners tell me, almost word for word</cite>
+    </div>
+    <div class="head" style="margin-bottom:0">
+      <span class="eyebrow">The problem</span>
+      <h2>Why the usual fixes <span class="hl">don't stop</span> the overspend</h2>
+    </div>
+    <p>If that sounds like your last board meeting, you're in good company. The money is going out the door. The kit is getting older. And nobody can say with confidence whether this year's spend is going on the right things.</p>
+    <p>Most owners try to fix this one piece at a time. A new maintenance system here, a condition survey there, someone brought in to look at capital planning. Each one makes sense on its own. The overspend carries on anyway.</p>
+    <p>In my experience the problem sits in the joins between the pieces. The maintenance contractor is paid to fix things, so nobody is paid to say which things to stop fixing. The capital team plans replacements from a condition survey that's three years old. Finance sees the invoices but not the risk behind them. Every team does its job well, and the whole thing still leaks money.</p>
+    <figure class="diagram" aria-label="Four parts of an asset business connected, with the joins between them marked as where money leaks">
+      <svg viewBox="0 0 640 260" role="img">
+        <g stroke="#E7E1D6" stroke-width="2.5" fill="none">
+          <line x1="150" y1="60" x2="490" y2="60"/><line x1="150" y1="200" x2="490" y2="200"/>
+          <line x1="90" y1="85" x2="90" y2="175"/><line x1="550" y1="85" x2="550" y2="175"/>
+          <line x1="150" y1="80" x2="490" y2="180"/>
+        </g>
+        <g fill="#0B5CAD"><circle cx="320" cy="60" r="8"/><circle cx="320" cy="200" r="8"/><circle cx="90" cy="130" r="8"/><circle cx="550" cy="130" r="8"/><circle cx="320" cy="130" r="8"/></g>
+        <g font-family="Inter, system-ui, sans-serif" font-size="14" font-weight="600" fill="#0E1B2E">
+          <rect x="30" y="35" width="120" height="50" rx="14" fill="#E3EEF9"/><text x="90" y="65" text-anchor="middle">Maintenance</text>
+          <rect x="490" y="35" width="120" height="50" rx="14" fill="#E3EEF9"/><text x="550" y="65" text-anchor="middle">Capital plan</text>
+          <rect x="30" y="175" width="120" height="50" rx="14" fill="#E3EEF9"/><text x="90" y="205" text-anchor="middle">Contracts</text>
+          <rect x="490" y="175" width="120" height="50" rx="14" fill="#E3EEF9"/><text x="550" y="205" text-anchor="middle">Finance</text>
+        </g>
+        <g font-family="Inter, system-ui, sans-serif" font-size="12" fill="#4A586B">
+          <text x="320" y="42" text-anchor="middle">old survey data</text>
+          <text x="320" y="232" text-anchor="middle">invoices, no risk view</text>
+          <text x="338" y="126">paid to fix, not to stop</text>
+        </g>
+      </svg>
+      <figcaption>Each box works on its own. The blue points, where they meet, are where I look first.</figcaption>
+    </figure>
+    <p>That's what I mean by the systems approach. I look at your assets, your people, your contracts and your money as one connected system, and I start where the joins are, because that's where most of the waste and the nasty surprises come from.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow">What you get</span>
+      <h2>Six things you'll have <span class="hl">at the end</span></h2>
+      <p class="lede">Everything is written in plain English, for you and your board, not for other consultants.</p>
+    </div>
+    <div class="grid three">
+      <div class="card"><h3>Where your money goes</h3><p>Three years of maintenance and capital spend, tied back to the assets and risks it was meant to deal with.</p></div>
+      <div class="card"><h3>Where your risk sits</h3><p>The assets most likely to hurt you next, what a failure would cost, and how sure we can be. Not a heat map nobody reads.</p></div>
+      <div class="card"><h3>The joins that cost you</h3><p>Where contracts, teams and data work against each other, with a number on it wherever I can put one.</p></div>
+      <div class="card"><h3>Value left on the table</h3><p>Spend you can cut, defer or redirect, and the reasoning behind each one.</p></div>
+      <div class="card"><h3>A plain-English plan</h3><p>What to do in the next 90 days, the next 12 months, and what can safely wait. Ready for a board paper.</p></div>
+      <div class="card"><h3>A findings session</h3><p>Ninety minutes with you and your team to talk it through and test it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band warm">
+  <div class="inner narrow">
+    <div class="head">
+      <span class="eyebrow">How it works</span>
+      <h2>Six weeks, <span class="hl">start to finish</span></h2>
+    </div>
+    <ol class="steps">
+      <li class="card step"><span class="num">1</span><div class="stack" style="gap:6px"><span class="when">Week 1</span><h3>Kick-off</h3><p>Half a day with you and the people who run the assets. You hand over whatever data you have. It doesn't need to be tidy. It never is.</p></div></li>
+      <li class="card step"><span class="num">2</span><div class="stack" style="gap:6px"><span class="when">Weeks 2 to 4</span><h3>The work</h3><p>I go through the spend, asset records, contracts and risk register, and talk to the people on the ground. They usually know exactly where the problems are.</p></div></li>
+      <li class="card step"><span class="num">3</span><div class="stack" style="gap:6px"><span class="when">Week 5</span><h3>Findings</h3><p>We sit down together and go through what I've found before anything is final.</p></div></li>
+      <li class="card step"><span class="num">4</span><div class="stack" style="gap:6px"><span class="when">Week 6</span><h3>The plan</h3><p>You get the final report and plan, written so your board can read it in twenty minutes.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow">The price</span>
+      <h2>Fixed price, <span class="hl">agreed up front</span></h2>
+      <p class="lede">No day rates and no creeping scope. As a guide, depending on the size and spread of your portfolio:</p>
+    </div>
+    <div class="grid three">
+      <div class="card"><span class="tag">Single site</span><span class="price">£5k to £9k</span><p>One site, one main type of asset.</p></div>
+      <div class="card"><span class="tag">Several sites</span><span class="price">£10k to £16k</span><p>A few sites, or a mixed portfolio.</p></div>
+      <div class="card"><span class="tag">Large portfolio</span><span class="price">£17k to £25k</span><p>Multi-site or complex, with several contractors.</p></div>
+    </div>
+    <div class="panel">
+      <span class="line">We agree the number before we start, and it doesn't move.</span>
+      <p>Not sure which band you're in? That's what the first call is for.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band warm">
+  <div class="inner">
+    <div class="head">
+      <span class="eyebrow">Is it right for you?</span>
+      <h2>Who this is <span class="hl">for</span></h2>
+    </div>
+    <div class="grid two">
+      <div class="card"><h3>A good fit if</h3>
+        <ul class="ticks">
+          <li><span class="mark"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>You own or operate a port, energy assets, an estate or similar</span></li>
+          <li><span class="mark"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Your assets are getting older</span></li>
+          <li><span class="mark"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>Your board is asking hard questions about spend</span></li>
+          <li><span class="mark"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg></span><span>You've got spend and asset data, even if it's messy</span></li>
+        </ul>
+      </div>
+      <div class="card"><h3>Not for you if</h3>
+        <ul class="ticks no">
+          <li><span class="mark"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>You want a box-ticking condition survey</span></li>
+          <li><span class="mark"><svg viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M4.5 4.5l7 7M11.5 4.5l-7 7"/></svg></span><span>You need someone to rubber-stamp a decision that's already made</span></li>
+        </ul>
+        <p>I'll tell you what I find, including the uncomfortable bits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band navy">
+  <div class="inner split">
+    <div class="stack">
+      <span class="eyebrow">Why me</span>
+      <h2>I've sat on both sides of the table</h2>
+      <p>I'm Warren, a civil engineer with 26 years in consultancy, helping owners transform how they manage their infrastructure assets, get better value from them and take the risk out.</p>
+      <p>I've also been developing property for over a decade, with my own money on the line. I know what it feels like when the numbers don't add up.</p>
+    </div>
+    <div class="stack">
+      <span class="stat">26</span>
+      <p>years advising on infrastructure assets</p>
+      <div class="card">
+        <span class="eyebrow">What happens after</span>
+        <h3>The plan is yours, either way</h3>
+        <p>Plenty of owners take the plan and run with it themselves. Where it shows deeper gaps, the next step is Systems Engineering for Asset Operations: the longer piece of work where we fix the joins properly, so the money goes where the risk is.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="inner narrow">
+    <div class="head">
+      <span class="eyebrow">Questions</span>
+      <h2>Things owners <span class="hl">usually ask</span></h2>
+    </div>
+    <div class="faq">
+      <details><summary>Our data is a mess. Is that a problem?</summary><p>No. It never is tidy. Hand over what you have in week one and I'll work with it. Part of the job is showing you which gaps in your data are actually costing you money.</p></details>
+      <details><summary>Do I have to buy the follow-on work?</summary><p>No. The Health Check stands on its own, and the plan is yours to use however you like. Many owners act on it themselves.</p></details>
+      <details><summary>How do you set the price?</summary><p>By the size and spread of your portfolio. We agree it on the first call, before any work starts, and it doesn't change.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0">
+  <div class="inner">
+    <div class="cta">
+      <span class="eyebrow">Let's talk</span>
+      <h2>Thirty minutes. No pitch.</h2>
+      <p>Tell me about your portfolio and what's keeping you up at night, and I'll tell you honestly whether a Health Check is worth it for you.</p>
+      <a class="btn white" href="https://calendly.com/thecurve-wanbridge/30min" target="_blank" rel="noopener">Book a 30-minute call →</a>
+      <span class="small">calendly.com/thecurve-wanbridge/30min</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="inner"><span><strong>Ambrad Consulting</strong> · Value and Risk Health Check</span><span>Infrastructure value and risk, the systems way</span></div>
+</footer>
+</body>
+</html>
